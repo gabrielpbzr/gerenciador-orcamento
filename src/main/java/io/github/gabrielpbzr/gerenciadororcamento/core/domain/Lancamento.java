@@ -18,7 +18,7 @@ public class Lancamento {
     private BigDecimal valor;
     private Tipo tipo;
 
-    public Lancamento(String descricao, BigDecimal valor, Tipo tipo) {
+    Lancamento(String descricao, BigDecimal valor, Tipo tipo) {
         if (Strings.isNullOrEmpty(descricao)) {
             throw new IllegalArgumentException("Descrição não informada");
         }
@@ -29,19 +29,12 @@ public class Lancamento {
         this.data = LocalDate.now();
     }
 
-    public Lancamento(LocalDate data, String descricao, BigDecimal valor, Tipo tipo) {
+    Lancamento(LocalDate data, String descricao, BigDecimal valor, Tipo tipo) {
+        this(descricao, valor, tipo);
         if (data == null) {
             throw new IllegalArgumentException("Data do lançamento não informado");
         }
-
-        if (Strings.isNullOrEmpty(descricao)) {
-            throw new IllegalArgumentException("Descrição não informada");
-        }
-
-        this.descricao = descricao;
         this.data = data;
-        this.valor = valor;
-        this.tipo = tipo;
     }
 
     public void setLancamentoID(String lancamentoID) {
